@@ -1,0 +1,8 @@
+body{
+    background-image: url('./assets/Group 5.jpg');
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+}
+#root{
+    height: 100%;
+}
