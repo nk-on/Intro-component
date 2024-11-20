@@ -5,10 +5,10 @@ export default function Container(){
         </div>
         <div className="w-[90vw]  h-[474px] md:w-[540px]  shadow-container-shadow bg-white">
             <form className="flex gap-[20px] flex-col justify-center items-center w-full h-full">
-                <input type="text" placeholder="First Name" className="w-[90%] h-[56px] rounded-[5px] border border-black-500 " />
-                <input type="text" placeholder="Last Name" className="w-[90%] h-[56px] rounded-[5px] border border-black-500" />
-                <input type="email" placeholder="Email" className="w-[90%] h-[56px] rounded-[5px] border border-black-500" />
-                <input type="password" placeholder="Password" className="w-[90%] h-[56px] rounded-[5px] border border-black-500" />
+                <input type="text" placeholder="First Name" className="w-[90%] h-[56px] rounded-[5px] pl-[25px] border border-black-500 " />
+                <input type="text" placeholder="Last Name" className="w-[90%] h-[56px] rounded-[5px] pl-[25px] border border-black-500" />
+                <input type="email" placeholder="Email" className="w-[90%] h-[56px] rounded-[5px] pl-[25px] border border-black-500" />
+                <input type="password" placeholder="Password" className="w-[90%] h-[56px] rounded-[5px] pl-[25px] border border-black-500" />
                 <button className="bg-[#38CC8B] w-[90%] h-[56px] rounded-[5px] shadow-button-shadow">CLAIM YOUR FREE TRIAL</button>
             </form>
         </div>
