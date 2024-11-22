@@ -36,8 +36,9 @@ export default function Container() {
               inputFields.map((inputField) => {
                 if (inputField.text === '') {
                   inputField.isEmpty = true;
+                }else{
+                  inputField.isEmpty = false;
                 }
-                console.log(inputFields)
                 return inputField;
               })
             );
