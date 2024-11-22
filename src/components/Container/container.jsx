@@ -13,6 +13,13 @@ export default function Container() {
     }
     return inputField;
   }
+  function setErrorClass(idx) {
+    return `w-full h-[56px] rounded-[5px] pl-[25px] ${
+      inputFields[idx].isEmpty
+        ? 'border border-red-500'
+        : 'border border-black-500'
+    }`;
+  }
   return (
     <div className="flex flex-col justify-center	 gap-3 w-[70%] md:w-[40%]">
       <div className="w-full h-[60px] md:w-[540px]  bg-[#5E54A4]">
@@ -30,10 +37,10 @@ export default function Container() {
                 if (inputField.text === '') {
                   inputField.isEmpty = true;
                 }
+                console.log(inputFields)
                 return inputField;
               })
             );
-            console.log(inputFields)
           }}
         >
           <div className="w-[90%] mb-4">
@@ -45,11 +52,7 @@ export default function Container() {
               type="text"
               name="firstName"
               placeholder="First Name"
-              className={`w-full h-[56px] rounded-[5px] pl-[25px] ${
-                inputFields[0].isEmpty
-                  ? 'border border-red-500'
-                  : 'border border-black-500'
-              }`}
+              className={setErrorClass(0)}
             />
           </div>
           <div className="w-[90%]  mb-4">
@@ -61,11 +64,7 @@ export default function Container() {
               type="text"
               name="lastName"
               placeholder="Last Name"
-              className={`w-full h-[56px] rounded-[5px] pl-[25px] ${
-                inputFields[1].isEmpty
-                  ? 'border border-red-500'
-                  : 'border border-black-500'
-              }`}
+              className={setErrorClass(1)}
             />
           </div>
           <div className="w-[90%]  mb-4">
@@ -84,11 +83,7 @@ export default function Container() {
               type="email"
               name="email"
               placeholder="Email"
-              className={`w-full h-[56px] rounded-[5px] pl-[25px] ${
-                inputFields[2].isEmpty
-                  ? 'border border-red-500'
-                  : 'border border-black-500'
-              }`}
+              className={setErrorClass(2)}
             />
           </div>
           <div className="w-[90%]  mb-4">
@@ -100,11 +95,7 @@ export default function Container() {
               type="password"
               name="password"
               placeholder="Password"
-              className={`w-full h-[56px] rounded-[5px] pl-[25px] ${
-                inputFields[3].isEmpty
-                  ? 'border border-red-500'
-                  : 'border border-black-500'
-              }`}
+              className={setErrorClass(3)}
             />
           </div>
           <button
