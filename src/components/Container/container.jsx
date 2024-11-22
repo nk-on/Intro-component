@@ -7,6 +7,12 @@ export default function Container() {
     { id: '2', text: '', isEmpty: false },
     { id: '3', text: '', isEmpty: false },
   ]);
+  function setText(inputField) {
+    if (inputField.id === event.target.id) {
+      inputField.text = event.target.value;
+    }
+    return inputField;
+  }
   return (
     <div className="flex flex-col justify-center	 gap-3 w-[70%] md:w-[40%]">
       <div className="w-full h-[60px] md:w-[540px]  bg-[#5E54A4]">
@@ -19,25 +25,21 @@ export default function Container() {
           className="flex gap-[20px] flex-col justify-center items-center w-full h-full"
           onSubmit={(e) => {
             e.preventDefault();
-            setInputFields(inputFields.map((inputField)=>{
-              if(inputField.text === ''){
-                inputField.isEmpty = true
-              }
-              return inputField;
-            }))
+            setInputFields(
+              inputFields.map((inputField) => {
+                if (inputField.text === '') {
+                  inputField.isEmpty = true;
+                }
+                return inputField;
+              })
+            );
+            console.log(inputFields)
           }}
         >
           <div className="w-[90%] mb-4">
             <input
               onChange={(event) => {
-                setInputFields(
-                  inputFields.map((inputField) => {
-                    if (inputField.id === event.target.id) {
-                      inputField.text = event.target.value;
-                    }
-                    return inputField;
-                  })
-                );
+                setInputFields(inputFields.map(setText));
               }}
               id="0"
               type="text"
@@ -53,14 +55,7 @@ export default function Container() {
           <div className="w-[90%]  mb-4">
             <input
               onChange={(event) => {
-                setInputFields(
-                  inputFields.map((inputField) => {
-                    if (inputField.id === event.target.id) {
-                      inputField.text = event.target.value;
-                    }
-                    return inputField;
-                  })
-                );
+                setInputFields(inputFields.map(setText));
               }}
               id="1"
               type="text"
@@ -99,14 +94,7 @@ export default function Container() {
           <div className="w-[90%]  mb-4">
             <input
               onChange={(event) => {
-                setInputFields(
-                  inputFields.map((inputField) => {
-                    if (inputField.id === event.target.id) {
-                      inputField.text = event.target.value;
-                    }
-                    return inputField;
-                  })
-                );
+                setInputFields(inputFields.map(setText));
               }}
               id="3"
               type="password"
