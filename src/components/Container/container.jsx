@@ -1,24 +1,12 @@
-import Input from '../input/input';
-export default function Container() {
-  const inputFields = [
-    {
-      type: 'text',
-      placeholder: 'First Name',
-    },
-    {
-      type: 'text',
-      placeholder: 'Last Name',
-    },
-    {
-      type: 'email',
-      placeholder: 'Email',
-    },
-    {
-      type: 'password',
-      placeholder: 'Password',
-    },
-  ];
+import { useState } from 'react';
 
+export default function Container() {
+  const [inputFields, setInputFields] = useState([
+    { id: '0', text: '', isEmpty: false },
+    { id: '1', text: '', isEmpty: false },
+    { id: '2', text: '', isEmpty: false },
+    { id: '3', text: '', isEmpty: false },
+  ]);
   return (
     <div className="flex flex-col justify-center	 gap-3 w-[70%] md:w-[40%]">
       <div className="w-full h-[60px] md:w-[540px]  bg-[#5E54A4]">
@@ -27,38 +15,113 @@ export default function Container() {
         </p>
       </div>
       <div className="w-full  h-[474px] md:w-[540px]  shadow-container-shadow bg-white">
-        <form className="flex gap-[20px] flex-col justify-center items-center w-full h-full">
+        <form
+          className="flex gap-[20px] flex-col justify-center items-center w-full h-full"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setInputFields(inputFields.map((inputField)=>{
+              if(inputField.text === ''){
+                inputField.isEmpty = true
+              }
+              return inputField;
+            }))
+          }}
+        >
           <div className="w-[90%] mb-4">
             <input
+              onChange={(event) => {
+                setInputFields(
+                  inputFields.map((inputField) => {
+                    if (inputField.id === event.target.id) {
+                      inputField.text = event.target.value;
+                    }
+                    return inputField;
+                  })
+                );
+              }}
+              id="0"
               type="text"
+              name="firstName"
               placeholder="First Name"
-              className="w-full  h-[56px] rounded-[5px] pl-[25px] border border-black-500"
+              className={`w-full h-[56px] rounded-[5px] pl-[25px] ${
+                inputFields[0].isEmpty
+                  ? 'border border-red-500'
+                  : 'border border-black-500'
+              }`}
             />
           </div>
           <div className="w-[90%]  mb-4">
             <input
+              onChange={(event) => {
+                setInputFields(
+                  inputFields.map((inputField) => {
+                    if (inputField.id === event.target.id) {
+                      inputField.text = event.target.value;
+                    }
+                    return inputField;
+                  })
+                );
+              }}
+              id="1"
               type="text"
+              name="lastName"
               placeholder="Last Name"
-              className="w-full  h-[56px] rounded-[5px] pl-[25px] border border-black-500"
+              className={`w-full h-[56px] rounded-[5px] pl-[25px] ${
+                inputFields[1].isEmpty
+                  ? 'border border-red-500'
+                  : 'border border-black-500'
+              }`}
             />
           </div>
           <div className="w-[90%]  mb-4">
             <input
+              onChange={(event) => {
+                setInputFields(
+                  inputFields.map((inputField) => {
+                    if (inputField.id === event.target.id) {
+                      inputField.text = event.target.value;
+                    }
+                    return inputField;
+                  })
+                );
+              }}
+              id="2"
               type="email"
+              name="email"
               placeholder="Email"
-              className="w-full  h-[56px] rounded-[5px] pl-[25px] border border-black-500"
+              className={`w-full h-[56px] rounded-[5px] pl-[25px] ${
+                inputFields[2].isEmpty
+                  ? 'border border-red-500'
+                  : 'border border-black-500'
+              }`}
             />
           </div>
           <div className="w-[90%]  mb-4">
             <input
+              onChange={(event) => {
+                setInputFields(
+                  inputFields.map((inputField) => {
+                    if (inputField.id === event.target.id) {
+                      inputField.text = event.target.value;
+                    }
+                    return inputField;
+                  })
+                );
+              }}
+              id="3"
               type="password"
+              name="password"
               placeholder="Password"
-              className="w-full h-[56px] rounded-[5px] pl-[25px] border border-black-500"
+              className={`w-full h-[56px] rounded-[5px] pl-[25px] ${
+                inputFields[3].isEmpty
+                  ? 'border border-red-500'
+                  : 'border border-black-500'
+              }`}
             />
           </div>
           <button
             className="bg-[#38CC8B] w-[90%] h-[56px] rounded-[5px] shadow-xbutton-shadow"
-            onClick={(e) => {}}
+            type="sumbmit"
           >
             CLAIM YOUR FREE TRIAL
           </button>
