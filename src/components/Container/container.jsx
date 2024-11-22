@@ -21,8 +21,8 @@ export default function Container() {
     }`;
   }
   return (
-    <div className="flex flex-col justify-center	 gap-3 w-[70%] md:w-[40%]">
-      <div className="w-full h-[60px] md:w-[540px]  bg-[#5E54A4]">
+    <div className="flex flex-col justify-center  gap-3 w-[70%]   md:w-[40%]">
+      <div className="w-full h-[60px] md:w-[540px]   bg-[#5E54A4]">
         <p className="text-white flex justify-center items-center h-full shadow-button-shadow">
           Try it free 7 days then $20/mo. thereafter
         </p>
@@ -36,7 +36,7 @@ export default function Container() {
               inputFields.map((inputField) => {
                 if (inputField.text === '') {
                   inputField.isEmpty = true;
-                }else{
+                } else {
                   inputField.isEmpty = false;
                 }
                 return inputField;
@@ -55,6 +55,9 @@ export default function Container() {
               placeholder="First Name"
               className={setErrorClass(0)}
             />
+            {inputFields[0].isEmpty && (
+              <h3 className="absolute text-red-500 ">Input must not be Empty</h3>
+            )}
           </div>
           <div className="w-[90%]  mb-4">
             <input
@@ -67,6 +70,9 @@ export default function Container() {
               placeholder="Last Name"
               className={setErrorClass(1)}
             />
+            {inputFields[1].isEmpty && (
+              <h3 className="absolute text-red-500">Input must not be Empty</h3>
+            )}
           </div>
           <div className="w-[90%]  mb-4">
             <input
@@ -86,6 +92,9 @@ export default function Container() {
               placeholder="Email"
               className={setErrorClass(2)}
             />
+            {inputFields[2].isEmpty && (
+              <h3 className="absolute text-red-500">Input must not be Empty</h3>
+            )}
           </div>
           <div className="w-[90%]  mb-4">
             <input
@@ -98,6 +107,9 @@ export default function Container() {
               placeholder="Password"
               className={setErrorClass(3)}
             />
+            {inputFields[3].isEmpty && (
+              <h3 className="absolute text-red-500">Input must not be Empty</h3>
+            )}
           </div>
           <button
             className="bg-[#38CC8B] w-[90%] h-[56px] rounded-[5px] shadow-xbutton-shadow"
