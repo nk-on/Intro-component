@@ -32,16 +32,26 @@ export default function Container() {
           className="flex gap-[20px] flex-col justify-center items-center w-full h-full"
           onSubmit={(e) => {
             e.preventDefault();
+            let allCorrect = true;
             setInputFields(
               inputFields.map((inputField) => {
                 if (inputField.text === '') {
                   inputField.isEmpty = true;
+                  allCorrect = false;
                 } else {
                   inputField.isEmpty = false;
                 }
                 return inputField;
               })
             );
+            if (allCorrect) {
+              setInputFields([
+                { id: '0', text: '', isEmpty: false },
+                { id: '1', text: '', isEmpty: false },
+                { id: '2', text: '', isEmpty: false },
+                { id: '3', text: '', isEmpty: false },
+              ]);
+            }
           }}
         >
           <div className="w-[90%] mb-4">
@@ -50,13 +60,16 @@ export default function Container() {
                 setInputFields(inputFields.map(setText));
               }}
               id="0"
+              value={inputFields[0].text}
               type="text"
               name="firstName"
               placeholder="First Name"
               className={setErrorClass(0)}
             />
             {inputFields[0].isEmpty && (
-              <h3 className="absolute text-red-500 ">Input must not be Empty</h3>
+              <h3 className="absolute text-red-500 ">
+                Input must not be Empty
+              </h3>
             )}
           </div>
           <div className="w-[90%]  mb-4">
@@ -65,6 +78,7 @@ export default function Container() {
                 setInputFields(inputFields.map(setText));
               }}
               id="1"
+              value={inputFields[1].text}
               type="text"
               name="lastName"
               placeholder="Last Name"
@@ -87,6 +101,7 @@ export default function Container() {
                 );
               }}
               id="2"
+              value={inputFields[2].text}
               type="email"
               name="email"
               placeholder="Email"
@@ -102,6 +117,7 @@ export default function Container() {
                 setInputFields(inputFields.map(setText));
               }}
               id="3"
+              value={inputFields[3].text}
               type="password"
               name="password"
               placeholder="Password"
