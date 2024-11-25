@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import Input from './Input/Input';
 export default function Container() {
   const [inputFields, setInputFields] = useState([
     { id: '0', text: '', isEmpty: false },
@@ -7,12 +7,6 @@ export default function Container() {
     { id: '2', text: '', isEmpty: false },
     { id: '3', text: '', isEmpty: false },
   ]);
-  function setText(inputField) {
-    if (inputField.id === event.target.id) {
-      inputField.text = event.target.value;
-    }
-    return inputField;
-  }
   function setErrorClass(idx) {
     return `w-full h-[56px] rounded-[5px] pl-[25px] ${
       inputFields[idx].isEmpty
@@ -20,6 +14,18 @@ export default function Container() {
         : 'border border-black-500'
     }`;
   }
+  function setText(inputField) {
+    if (inputField.id === event.target.id) {
+      inputField.text = event.target.value;
+    }
+    return inputField;
+  }
+  const inputArr = [
+    { id: 0, name: "firstName",type:"text" },
+    { id: 1, name: "lastName",type:"text" },
+    { id: 2, name: "email",type:"email" },
+    { id: 3, name: "password",type:"password" }
+  ];
   return (
     <div className="flex flex-col justify-center  gap-3 w-[70%]   md:w-[40%]">
       <div className="w-full h-[60px] md:w-[540px]   bg-[#5E54A4]">
@@ -54,79 +60,9 @@ export default function Container() {
             }
           }}
         >
-          <div className="w-[90%] mb-4">
-            <input
-              onChange={(event) => {
-                setInputFields(inputFields.map(setText));
-              }}
-              id="0"
-              value={inputFields[0].text}
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              className={setErrorClass(0)}
-            />
-            {inputFields[0].isEmpty && (
-              <h3 className="absolute text-red-500 ">
-                Input must not be Empty
-              </h3>
-            )}
-          </div>
-          <div className="w-[90%]  mb-4">
-            <input
-              onChange={(event) => {
-                setInputFields(inputFields.map(setText));
-              }}
-              id="1"
-              value={inputFields[1].text}
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              className={setErrorClass(1)}
-            />
-            {inputFields[1].isEmpty && (
-              <h3 className="absolute text-red-500">Input must not be Empty</h3>
-            )}
-          </div>
-          <div className="w-[90%]  mb-4">
-            <input
-              onChange={(event) => {
-                setInputFields(
-                  inputFields.map((inputField) => {
-                    if (inputField.id === event.target.id) {
-                      inputField.text = event.target.value;
-                    }
-                    return inputField;
-                  })
-                );
-              }}
-              id="2"
-              value={inputFields[2].text}
-              type="email"
-              name="email"
-              placeholder="Email"
-              className={setErrorClass(2)}
-            />
-            {inputFields[2].isEmpty && (
-              <h3 className="absolute text-red-500">Input must not be Empty</h3>
-            )}
-          </div>
-          <div className="w-[90%]  mb-4">
-            <input
-              onChange={(event) => {
-                setInputFields(inputFields.map(setText));
-              }}
-              id="3"
-              value={inputFields[3].text}
-              type="password"
-              name="password"
-              placeholder="Password"
-              className={setErrorClass(3)}
-            />
-            {inputFields[3].isEmpty && (
-              <h3 className="absolute text-red-500">Input must not be Empty</h3>
-            )}
-          </div>
+          {inputArr.map((inputElement)=>{
+            return <Input key={inputElement.id} inputFields = {inputFields} setInputFields = {setInputFields} setText={setText} setErrorClass = {setErrorClass} id = {inputElement.id} name = {inputElement.name} type = {inputElement.type}/>
+          })}
           <button
             className="bg-[#38CC8B] w-[90%] h-[56px] rounded-[5px] shadow-xbutton-shadow"
             type="sumbmit"
