@@ -60,9 +60,20 @@ export default function Container() {
             }
           }}
         >
-          {inputArr.map((inputElement)=>{
-            return <Input key={inputElement.id} inputFields = {inputFields} setInputFields = {setInputFields} setText={setText} setErrorClass = {setErrorClass} id = {inputElement.id} name = {inputElement.name} type = {inputElement.type}/>
-          })}
+          {
+          inputArr.map((inputElement)=>{
+            const inputProps = {
+              inputFields: inputFields,
+              setInputFields: setInputFields,
+              setText: setText,
+              setErrorClass: setErrorClass,
+              id: inputElement.id,
+              name: inputElement.name,
+              type: inputElement.type,
+            };
+            return <Input key={inputElement.id} {...inputProps}/>
+          })
+          }
           <button
             className="bg-[#38CC8B] w-[90%] h-[56px] rounded-[5px] shadow-xbutton-shadow"
             type="sumbmit"

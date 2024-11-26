@@ -1,4 +1,12 @@
-export default function Input({inputFields,setInputFields,setText,setErrorClass,id,name,type}) {
+export default function Input({
+  inputFields,
+  setInputFields,
+  setText,
+  setErrorClass,
+  id,
+  name,
+  type,
+}) {
   return (
     <div className="w-[90%] mb-4">
       <input
